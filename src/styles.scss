@@ -1,6 +1,148 @@
 @import 'scss/reset';
 @import 'scss/base';
-@import 'scss/nav';
-@import 'scss/footer';
 
-@import '../assets/fonts/webfonts/stylesheet.css';
+body {
+  font-family: Helvetica;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-burger {
+  $size: 50px;
+  height: $size;
+  width: $size;
+
+  //background: rgba(red, .1);
+  position: relative;
+
+  $offsetY: 7px;
+
+  margin-bottom: 200px;
+
+  .bar {
+    position: absolute;
+    left: 0;
+
+
+    width: 100%;
+    height: 3px;
+    background: black;
+    transition: transform 1s ease;
+
+    &.bar--1 {
+      transform: translateY(-$offsetY);
+    }
+
+    &.bar--2 {
+      transform: translateY($offsetY);
+    }
+  }
+
+  .bar {
+    position: absolute;
+    left: 0;
+
+
+    width: 100%;
+    height: 3px;
+    background: black;
+    transition: transform 1s ease;
+
+    &.bar--1 {
+      transform: translate3d(0, -$offsetY, 0);
+    }
+
+    &.bar--2 {
+      transform: translate3d(0, $offsetY, 0);
+    }
+  }
+
+  &:hover {
+    .bar--1 {
+      transform: translate3d(0, -$offsetY, 0) rotate(-180deg);
+    }
+
+    .bar--2 {
+      transform: translate3d(0, $offsetY, 0) rotate(-180deg);
+    }
+
+    &.active {
+
+      .bar--1 {
+        transform: translate3d(0, calc(2 * #{$offsetY}), 0) rotate(-495deg);
+      }
+
+      .bar--2 {
+        transform: translate3d(0, calc(2 * #{$offsetY}), 0) rotate(-45deg);
+      }
+    }
+  }
+
+  &.active {
+    .bar {
+      transition: transform 600ms ease;
+    }
+
+    .bar--1 {
+      transform: translate3d(0, calc(2 * #{$offsetY}), 0) rotate(-675deg);
+    }
+
+    .bar--2 {
+      transform: translate3d(0, calc(2 * #{$offsetY}), 0) rotate(-225deg);
+    }
+  }
+}
+
+.menu-title {
+  font-size: 100px;
+  $transitionTime: 200ms;
+  font-weight: 300;
+
+  span {
+    transition: transform $transitionTime;
+    transform-origin: bottom left;
+    display: inline-block;
+
+    &:nth-child(1) {
+      transition-delay: calc(3*#{$transitionTime});
+    }
+
+    &:nth-child(2) {
+      transition-delay: calc(2*#{$transitionTime});
+    }
+
+    &:nth-child(3) {
+      transition-delay: calc(1*#{$transitionTime});
+    }
+
+    &:nth-child(4) {
+      transition-delay: 0;
+    }
+  }
+
+  &:hover {
+    span {
+      transform: rotate(12deg);
+
+      &:nth-child(1) {
+        transition-delay: 0ms;
+      }
+
+      &:nth-child(2) {
+        transition-delay: calc(1*#{$transitionTime});
+      }
+
+      &:nth-child(3) {
+        transition-delay: calc(2*#{$transitionTime});
+      }
+
+      &:nth-child(4) {
+        transition-delay: calc(3*#{$transitionTime});
+      }
+    }
+  }
+}
+

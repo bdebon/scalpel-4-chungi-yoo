@@ -1,5 +1,5 @@
-// here you put all the js you want.
-import Navbar from "./js/navbar.js";
+const burger = document.querySelector('.btn-burger');
 
-const navbar = new Navbar()
-
+burger.addEventListener('click', () => {
+    burger.classList.toggle('active');
+})
